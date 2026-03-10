@@ -1,47 +1,24 @@
 import argparse
 
+parser = argparse.ArgumentParser()
 
-def main():
-    parser = argparse.ArgumentParser(
-        description="Sum integers from command line or file"
-    )
+parser.add_argument("numbers", nargs="*", type=int)
+parser.add_argument("-f", "--file", type=str)
+parser.add_argument("-o", "--output", type=str)
 
-    parser.add_argument(
-        "numbers",
-        nargs="*",
-        type=int,
-        help="Integers to sum"
-    )
+args = parser.parse_args()
 
-    parser.add_argument(
-        "-f", "--file",
-        type=str,
-        help="Input file (one number per line)"
-    )
+total = 0
 
-    parser.add_argument(
-        "-o", "--output",
-        type=str,
-        help="Output file"
-    )
+if args.file:
+    with open(args.file, "r") as f:
+        for line in f:
+            total += int(line.strip())
+else:
+    total = sum(args.numbers)
 
-    args = parser.parse_args()
-
-    total = 0
-
-    if args.file:
-        with open(args.file, "r") as f:
-            for line in f:
-                total += int(line.strip())
-    else:
-        total = sum(args.numbers)
-
-    if args.output:
-        with open(args.output, "w") as f:
-            f.write(str(total))
-    else:
-        print(total)
-
-
-if __name__ == "__main__":
-    main()
+if args.output:
+    with open(args.output, "w") as f:
+        f.write(str(total))
+else:
+    print(total)
