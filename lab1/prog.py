@@ -13,7 +13,10 @@ total = 0
 if args.file:
     with open(args.file, "r") as f:
         for line in f:
-            total += int(line.strip())
+            try:
+                total += int(line.strip())
+            except ValueError:
+                print("Invalid input")
 else:
     total = sum(args.numbers)
 
