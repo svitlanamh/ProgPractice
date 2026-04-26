@@ -15,6 +15,6 @@ class Source(BaseModel):
     country_code: str = Field(min_length=2, max_length=2)
 
 class Vote(BaseModel):
-    voter_id: int = Field(gt=10000)
+    voter_id: int = Field(gt=0)
     block_id: str = Field(pattern=r"^[0-9a-fA-F]{8}$")
     source_id: int = Field(gt=0)
