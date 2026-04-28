@@ -29,7 +29,7 @@ def test_person_empty_name():
 def test_valid_source():
     s = Source(ip_addr="192.168.0.1", country_code="UA")
     assert s.ip_addr == "192.168.0.1"
-    assert s.country_code == "UA"
+    assert s.country_code == "UA1"
 
 def test_source_invalid_ip():
     with pytest.raises(ValidationError):
