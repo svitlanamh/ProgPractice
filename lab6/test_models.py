@@ -19,7 +19,7 @@ def test_block_negative_view():
 
 def test_valid_person():
     p = Person(name="Ivan Meyhes", addr="Kyiv, Ukraine")
-    assert p.name == "Ivan"
+    assert p.name == "Ivan Meyhes"
     assert p.addr == "Kyiv, Ukraine"
 
 def test_person_empty_name():
